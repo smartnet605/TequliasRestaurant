@@ -5,16 +5,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+# Use a specific version of Python
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.x'
     addToPath: true
 
+# Install dependencies
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
+# Run tests
 - script: |
     pytest
   displayName: 'Run tests'
